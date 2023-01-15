@@ -1,0 +1,66 @@
+show databases;
+show tables;
+-- Найти всех сотрудников, работающих в департаменте с id 90
+select
+    first_name,
+    last_name,
+    department_id
+from employees
+where department_id = 90;
+
+
+-- Найти всех сотрудников, зарабатывающих больше 5000
+
+select
+    first_name,
+    last_name,
+    salary
+from employees
+where salary > 5000;
+
+-- Вывести всех сотрудников с jobid ‘FIACCOUNT’ и зарабатывающих меньше 8000
+
+select
+    first_name,
+    last_name,
+    job_id,
+    salary
+from employees
+where job_id = "FI_ACCOUNT" and salary < 8000;
+
+-- Вывести сотрудников, у которых в фамилии в середине слова встречаются сочетания ‘kk’ или ‘ll’
+
+select
+    first_name,
+    last_name
+from employees
+where last_name like '%kk%' or '%ll%';
+
+-- Вывести сотрудников с commissionpct NULL
+
+select
+    first_name,
+    last_name,
+    commission_pct
+from employees
+where commission_pct is null;
+
+-- Вывести всех сотрудников кроме тех, кто работает в департаментах 80 и 110
+
+select
+    first_name,
+    last_name,
+    department_id
+from employees
+where department_id not in (80, 100);
+
+-- Вывести сотрудников зарабатывающих от 5000 до 7000 (включая концы)
+
+select
+    first_name,
+    last_name,
+    salary
+from employees
+-- where salary between 5000 and 7000;
+where salary >=5000 and salary<=7000;
+
