@@ -1,0 +1,58 @@
+-- How many products in each product line?
+
+SELECT productline,
+COUNT(*)
+FROM products
+GROUP BY productLine;
+
+-- GROUP BY productName;
+
+SELECT productName, productLine
+FROM products p
+GROUP BY productName;
+
+-- What is the minimum payment received?
+
+SELECT MIN(amount)
+FROM payments; 
+
+
+-- List all payments greater than twice the average payment.
+
+
+SELECT *
+FROM payments
+WHERE amount > (SELECT AVG(amount)*2 FROM payments);
+
+
+-- What is the average percentage markup of the MSRP on buyPrice?
+
+SELECT AVG (MSRP), buyPrice
+FROM products p 
+
+
+-- How many distinct products does ClassicModels sell?
+
+SELECT productVendor, COUNT(productVendor) 
+FROM products p 
+WHERE productVendor  LIKE "%Classic%"
+GROUP BY productVendor;
+
+
+-- What are the names of executives with VP or Manager in their title? Use the CONCAT function
+
+SELECT CONCAT(firstName, " ",lastName), jobTitle
+FROM employees 
+WHERE jobTitle LIKE "%VP%" OR jobTitle LIKE "%Manager%";
+
+
+-- to combine the employee's first name and last name into a single field for reporting.
+
+SELECT CONCAT(firstName, " ",lastName) AS firstAndLastNamr
+FROM employees;
+
+-- Which orders have a value greater than $5,000?
+
+SELECT checkNumber, amount
+FROM payments p 
+WHERE amount > 5000;
